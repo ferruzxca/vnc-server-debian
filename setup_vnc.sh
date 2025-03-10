@@ -29,7 +29,7 @@ for user in debian_gnome debian_kde debian_lxde; do
     if [ "$user" == "debian_gnome" ]; then
         su - $user -c "echo -e '#!/bin/bash\nunset SESSION_MANAGER\nunset DBUS_SESSION_BUS_ADDRESS\nxrdb $HOME/.Xresources\ngnome-session &' > ~/.vnc/xstartup"
     elif [ "$user" == "debian_kde" ]; then
-        su - $user -c "echo -e '#!/bin/bash\nunset SESSION_MANAGER\nunset DBUS_SESSION_BUS_ADDRESS\nxrdb $HOME/.Xresources\nstartkde &' > ~/.vnc/xstartup"
+        su - $user -c "echo -e '#!/bin/bash\nunset SESSION_MANAGER\nunset DBUS_SESSION_BUS_ADDRESS\nxrdb $HOME/.Xresources\nstartplasma-x11 &' > ~/.vnc/xstartup"
     elif [ "$user" == "debian_lxde" ]; then
         su - $user -c "echo -e '#!/bin/bash\nunset SESSION_MANAGER\nunset DBUS_SESSION_BUS_ADDRESS\nxrdb $HOME/.Xresources\nlxsession &' > ~/.vnc/xstartup"
     fi
@@ -37,7 +37,7 @@ for user in debian_gnome debian_kde debian_lxde; do
     su - $user -c "chmod +x ~/.vnc/xstartup"
     su - $user -c "vncserver"
     
-    echo "VNC configurado para el usuario $user"
+    echo "VNC configurado para el usuario $user con su escritorio correspondiente."
 done
 
 # Instalar clientes VNC en el servidor para pruebas
