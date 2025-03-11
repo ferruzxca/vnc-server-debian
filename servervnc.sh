@@ -8,6 +8,10 @@ sudo apt update -y && sudo apt upgrade -y
 # Instalar VNC Server y entornos de escritorio
 sudo apt install -y tightvncserver xfce4 xfce4-goodies gnome-session kde-plasma-desktop lxde
 
+# Crear usuarios para cada entorno de escritorio
+useradd -m -s /bin/bash debian_kde
+useradd -m -s /bin/bash debian_lxde
+
 # Asignar contraseñas a los usuarios
 echo "debian_gnome:password" | sudo chpasswd
 echo "debian_kde:password" | sudo chpasswd
